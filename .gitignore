@@ -1,0 +1,9 @@
+# Private local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+node_modules/
+.next/
+.DS_Store

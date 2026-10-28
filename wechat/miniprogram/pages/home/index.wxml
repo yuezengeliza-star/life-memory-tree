@@ -1,0 +1,35 @@
+<view class="home">
+  <view class="opening">
+    <view class="date">{{dateLabel}}</view>
+    <view class="title kai">让记忆，</view>
+    <view class="title kai">在这里生长</view>
+    <view class="verse"><text class="verse-line">一片叶子，</text><text class="verse-line">一段属于你的时光</text></view>
+    <image class="tree" src="/assets/tree.png" mode="aspectFit" aria-label="枝叶舒展的人生记忆树"/>
+    <view class="caption">
+      <view class="cap-label">我的人生树</view>
+      <view class="cap-year kai">{{year}}</view>
+      <view class="cap-note">收藏了 {{yearCount}} 个瞬间</view>
+    </view>
+  </view>
+  <view class="base">
+    <view wx:if="{{error}}" class="error-block">{{error}}<button class="retry" bindtap="retry">重新连接</button></view>
+    <view wx:if="{{needsConsent}}" class="consent-card">
+      <view class="consent-title">把重要的瞬间，留在自己的树上</view>
+      <button class="privacy-link" bindtap="privacy">先阅读隐私说明</button>
+      <button class="record" bindtap="begin">开始使用</button>
+    </view>
+    <button wx:else class="record" bindtap="capture"><image class="record-icon" src="/assets/icons/pen.svg" mode="aspectFit" aria-hidden="true"/><text>留下这一刻</text></button>
+    <view class="recent">
+      <view class="recent-header">
+        <view class="recent-title kai">最近的记忆</view>
+        <button class="recent-all" bindtap="tree">查看全部</button>
+      </view>
+      <view wx:if="{{loading}}" class="empty">正在翻开记忆…</view>
+      <memory-list wx:elif="{{recent.length}}" records="{{recent}}" bind:open="open"/>
+      <view wx:elif="{{!error}}" class="empty">一张照片，一句话，都值得留下。</view>
+    </view>
+    <view class="private"><image class="lock-icon" src="/assets/icons/lock.svg" mode="aspectFit" aria-hidden="true"/><text>不必向谁展示，也值得认真收藏。</text></view>
+  </view>
+  <first-letter open="{{letterOpen}}" bind:close="onLetterClose"/>
+  <privacy-consent id="privacy"/>
+</view>

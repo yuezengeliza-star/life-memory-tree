@@ -1,0 +1,4 @@
+<wxs module="fmt">
+module.exports = { short: function (d) { if (!d) return ''; return d.length > 10 ? d.slice(5) : d } }
+</wxs>
+<button wx:for="{{shown}}" wx:key="id" class="memory" data-id="{{item.id}}" bindtap="open" aria-label="打开记忆：{{item.title}}"><image wx:if="{{item.photoFileId}}" class="thumb" src="{{item.photoFileId}}" mode="aspectFill"/><view wx:else class="symbol"><image class="kind-icon" src="/assets/icons/kind-{{item.kind || 'leaf'}}.svg" mode="aspectFit" aria-hidden="true"/></view><view class="body"><view class="name">{{item.title}}</view><view class="excerpt">{{item.content}}</view><view class="date-time">{{item.precious ? '★ ' : ''}}{{fmt.short(item.dateText)}}</view></view></button>

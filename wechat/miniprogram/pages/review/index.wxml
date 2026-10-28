@@ -1,0 +1,51 @@
+<view class="page review-page">
+  <view class="head">
+    <view class="head-year">{{yearText}}年</view>
+    <view class="head-month">
+      <text class="head-month-num kai">{{monthNum}}月</text>
+      <picker mode="date" fields="month" value="{{month}}" start="1900-01" end="2100-12" bindchange="onMonth">
+        <view class="month-drop" aria-label="选择月份">▾</view>
+      </picker>
+    </view>
+    <view class="subtitle">生活的答案，藏在你写下的字里</view>
+  </view>
+
+  <view wx:if="{{error}}" class="error">{{error}}<button bindtap="retry">重试</button></view>
+  <view wx:if="{{loading}}" class="empty">正在整理记忆…</view>
+
+  <block wx:elif="{{records.length}}">
+    <view class="stats-card">
+      <view class="stat"><text class="stat-n kai">{{records.length}}</text><text class="stat-l">个瞬间</text></view>
+      <view class="stat"><text class="stat-n kai">{{preciousCount}}</text><text class="stat-l">个珍贵</text></view>
+      <view class="stat" wx:for="{{kinds}}" wx:key="id"><text class="stat-n kai">{{item.count}}</text><text class="stat-l">{{item.name}}</text></view>
+    </view>
+
+    <block wx:if="{{echoes.length}}">
+      <view class="section-title">写给未来的话</view>
+      <view class="echo-card" wx:for="{{echoes}}" wx:key="id">
+        <view class="reading kai">{{item.echo}}</view>
+        <view class="muted">{{item.monthDay}}　{{item.title}}</view>
+      </view>
+    </block>
+
+    <view class="section-title">重新走过这些日子</view>
+    <view class="timeline">
+      <view class="tl-item {{index === records.length - 1 ? 'last' : ''}}" wx:for="{{records}}" wx:key="id" data-id="{{item.id}}" bindtap="open">
+        <view class="tl-date"><text class="tl-m">{{item.md.month}}月</text><text class="tl-d kai">{{item.md.day}}日</text></view>
+        <view class="tl-spine"><view class="tl-dot"></view></view>
+        <view class="tl-body">
+          <image wx:if="{{item.photoFileId}}" class="tl-thumb" src="{{item.photoFileId}}" mode="aspectFill"/>
+          <view wx:else class="tl-thumb tl-kind"><image src="/assets/icons/kind-{{item.kind}}.svg" mode="aspectFit"/></view>
+          <view class="tl-text">
+            <view class="tl-title">{{item.title}}</view>
+            <view class="tl-excerpt">{{item.content}}</view>
+            <view class="tl-date">{{item.dateText}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:elif="{{!error}}" class="empty">这个月还没有留下记忆<button class="secondary" bindtap="capture">留下第一个瞬间</button></view>
+</view>
+<privacy-consent id="privacy"/>

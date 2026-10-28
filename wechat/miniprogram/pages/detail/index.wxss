@@ -1,0 +1,4 @@
+.detail-title{margin:20rpx 0 32rpx;word-break:break-word}.detail-photo{margin-bottom:34rpx;max-height:1200rpx}.content{font-family:'Tree WenKai','Kaiti SC','STKaiti','KaiTi',serif;font-size:34rpx;line-height:1.95;margin-bottom:32rpx}.echo{background:#e8ebda;border-radius:26rpx;padding:30rpx;margin-top:26rpx}.echo .reading{font-family:'Tree WenKai','Kaiti SC','STKaiti','KaiTi',serif;margin-top:14rpx;font-size:30rpx}
+/* 二级页无底部导航，不需要 tab 留白 */
+.page{padding-bottom:60rpx}
+.album-link{color:#61704f;text-decoration:underline;margin-left:16rpx}

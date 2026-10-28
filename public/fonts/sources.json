@@ -1,0 +1,34 @@
+[
+  {
+    "font": "Noto Serif SC",
+    "file": "home-serif.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notoserifsc/NotoSerifSC%5Bwght%5D.ttf",
+    "source_sha256": "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9",
+    "license": "serif-OFL.txt",
+    "bytes": 127004
+  },
+  {
+    "font": "Noto Sans SC",
+    "file": "home-sans.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf",
+    "source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+    "license": "sans-OFL.txt",
+    "bytes": 98040
+  },
+  {
+    "font": "LXGW WenKai",
+    "file": "home-wenkai.woff2",
+    "source": "https://raw.githubusercontent.com/lxgw/LxgwWenKai/main/fonts/TTF/LXGWWenKai-Regular.ttf",
+    "source_sha256": "39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009",
+    "license": "wenkai-OFL.txt",
+    "bytes": 81156
+  },
+  {
+    "font": "ZCOOL XiaoWei",
+    "file": "home-xiaowei.woff2",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/zcoolxiaowei/ZCOOLXiaoWei-Regular.ttf",
+    "source_sha256": "a42b620140f493db42f741351dfbf343c0936d58588ee8004b8b2a218d997ff1",
+    "license": "xiaowei-OFL.txt",
+    "bytes": 115656
+  }
+]

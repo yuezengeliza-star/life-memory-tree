@@ -1,0 +1,10 @@
+const fs = require('fs');
+const path = require('path');
+const root = path.join(__dirname, '..');
+const woff2 = path.join(root, 'public', 'fonts', 'home-wenkai.woff2');
+const target = path.join(root, 'wechat', 'miniprogram', 'styles', 'fonts.wxss');
+const before = fs.statSync(target).size;
+const base64 = fs.readFileSync(woff2).toString('base64');
+const css = `@font-face{font-family:'Tree WenKai';src:url(data:font/woff2;base64,${base64}) format('woff2');font-weight:400;font-style:normal;font-display:swap}\n`;
+fs.writeFileSync(target, css);
+console.log(`fonts.wxss: ${before.toLocaleString()} → ${Buffer.byteLength(css).toLocaleString()} bytes`);

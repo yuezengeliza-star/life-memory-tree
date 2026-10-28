@@ -1,0 +1,69 @@
+/* 「一封真正的来信」—— 首次进入的引导层，也可从「我的」重读。
+   底色取自设计稿：深绿山林 #3f4936 → #2c352a，字色米白 #f2ede0，动作按钮米色实心。
+   布局用 flex 列 + min-height:0，保证信纸（scroll-view）能算出确定高度真正滚动，
+   内容偏高的小屏（windowHeight < 700）由 .compact 整体收敛。 */
+.layer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  padding: 36rpx 52rpx calc(36rpx + env(safe-area-inset-bottom));
+  overflow: hidden;
+  background: linear-gradient(160deg, #3f4936 16%, #2c352a 100%);
+}
+.bg { position: absolute; top: -8%; left: -20%; width: 140%; height: 76%; opacity: 0.15; }
+.tint { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(120% 55% at 72% 10%, rgba(150, 164, 124, 0.3), rgba(0, 0, 0, 0) 70%); }
+
+/* ---------- 封面：收到来信 ---------- */
+.cover { position: relative; z-index: 1; flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+.brand { font-size: 28rpx; line-height: 1.8; letter-spacing: 2rpx; color: #aeb898; }
+.cover-title { font-family: 'Tree WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', serif; font-size: 72rpx; line-height: 1.28; letter-spacing: 2rpx; color: #f2ede0; }
+.cover-title:first-of-type { margin-top: 56rpx; }
+/* 上下 auto 外边距：空间富余时柔和居中，空间紧张时自动收为 0 */
+.envelope-wrap { position: relative; margin: auto 0; width: 620rpx; height: 422rpx; }
+.envelope { width: 620rpx; height: 422rpx; }
+/* 信封上的三行字统一左对齐到同一条左边缘 */
+.env-to { position: absolute; left: 51rpx; top: 224rpx; font-family: 'Tree WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', serif; font-size: 32rpx; color: #4b4738; padding-bottom: 4rpx; border-bottom: 1rpx solid #b0a68b; }
+.env-open { position: absolute; left: 51rpx; top: 288rpx; font-family: 'Tree WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', serif; font-size: 32rpx; color: #4b4738; }
+.env-from { position: absolute; left: 51rpx; top: 358rpx; font-family: 'Tree WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', serif; font-size: 24rpx; color: #5c5745; }
+
+/* ---------- 拆信阅读 ---------- */
+/* .reader 只负责占住剩余高度；信纸用绝对定位撑出确定高度，
+   scroll-view 拿到确定高度才会真正滚动（上留 76rpx 给关闭按钮，下留 96rpx 给提示） */
+.reader { position: relative; flex: 1 1 auto; min-height: 0; }
+.paper { position: absolute; top: 76rpx; left: 0; right: 0; bottom: 96rpx; border-radius: 26rpx; box-shadow: 0 12rpx 34rpx rgba(0, 0, 0, 0.2); background: linear-gradient(180deg, #e8dec7 0, #f0e7d4 26rpx); }
+.paper-body { padding: 54rpx 48rpx 58rpx; }
+.para { font-family: 'Tree WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', serif; font-size: 32rpx; line-height: 2.05; color: #4b4738; margin-bottom: 34rpx; }
+.sign { font-family: 'Tree WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', serif; font-size: 32rpx; line-height: 2.05; color: #4b4738; text-align: right; margin-top: 42rpx; }
+.close { position: absolute; top: 4rpx; right: 42rpx; z-index: 2; width: 64rpx; height: 64rpx; display: grid; place-items: center; }
+.close-icon { width: 40rpx; height: 40rpx; }
+.hint { position: absolute; left: 0; right: 0; bottom: calc(272rpx + env(safe-area-inset-bottom)); z-index: 2; display: flex; align-items: center; justify-content: center; gap: 12rpx; font-size: 24rpx; color: #cfd6bb; }
+.hint-icon { width: 28rpx; height: 28rpx; }
+
+/* ---------- 底部动作 ---------- */
+.actions { position: relative; z-index: 1; flex: none; padding-top: 30rpx; display: flex; flex-direction: column; gap: 6rpx; }
+.cta { display: flex; align-items: center; justify-content: center; min-height: 98rpx; background: #f2ede0; color: #3f4936; border-radius: 12rpx; padding: 24rpx 30rpx; font-family: 'Tree WenKai', 'Kaiti SC', 'STKaiti', 'KaiTi', serif; font-size: 34rpx; letter-spacing: 2rpx; }
+.later { padding: 22rpx 0; font-size: 28rpx; color: #cfd6bb; text-align: center; }
+
+/* ---------- 小屏收紧（iPhone 8/SE 这类 667pt 屏） ---------- */
+.compact { padding: 22rpx 44rpx calc(22rpx + env(safe-area-inset-bottom)); }
+.compact .brand { font-size: 26rpx; }
+.compact .cover-title { font-size: 58rpx; }
+.compact .cover-title:first-of-type { margin-top: 28rpx; }
+.compact .envelope-wrap { width: 520rpx; height: 354rpx; }
+.compact .envelope { width: 520rpx; height: 354rpx; }
+.compact .env-to { left: 43rpx; top: 188rpx; font-size: 28rpx; }
+.compact .env-open { left: 43rpx; top: 242rpx; font-size: 28rpx; }
+.compact .env-from { left: 43rpx; top: 300rpx; font-size: 22rpx; }
+.compact .paper { top: 52rpx; bottom: 82rpx; }
+.compact .paper-body { padding: 44rpx 40rpx 48rpx; }
+.compact .para, .compact .sign { font-size: 30rpx; line-height: 1.95; margin-bottom: 28rpx; }
+.compact .sign { margin-top: 34rpx; }
+.compact .hint { bottom: calc(238rpx + env(safe-area-inset-bottom)); }
+.compact .actions { padding-top: 20rpx; }
+.compact .cta { min-height: 88rpx; font-size: 32rpx; }
+.compact .later { padding: 18rpx 0; font-size: 26rpx; }

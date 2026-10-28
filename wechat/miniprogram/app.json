@@ -1,0 +1,19 @@
+{
+  "pages": ["pages/home/index", "pages/tree/index", "pages/capture/index", "pages/review/index", "pages/me/index", "pages/detail/index", "pages/privacy/index"],
+  "window": { "navigationBarTitleText": "人生记忆树", "navigationBarBackgroundColor": "#3f4936", "navigationBarTextStyle": "white", "backgroundColor": "#f5f3e8" },
+  "tabBar": {
+    "custom": true,
+    "color": "#676f5d", "selectedColor": "#506342", "backgroundColor": "#f5f3e8", "borderStyle": "white",
+    "list": [
+      {"pagePath":"pages/home/index","text":"首页","iconPath":"assets/home.png","selectedIconPath":"assets/home-active.png"},
+      {"pagePath":"pages/tree/index","text":"人生树","iconPath":"assets/tree-tab.png","selectedIconPath":"assets/tree-tab-active.png"},
+      {"pagePath":"pages/capture/index","text":"留下","iconPath":"assets/plus.png","selectedIconPath":"assets/plus-active.png"},
+      {"pagePath":"pages/review/index","text":"回望","iconPath":"assets/review.png","selectedIconPath":"assets/review-active.png"},
+      {"pagePath":"pages/me/index","text":"我的","iconPath":"assets/me.png","selectedIconPath":"assets/me-active.png"}
+    ]
+  },
+  "usingComponents": { "privacy-consent": "/components/privacy-consent/index", "first-letter": "/components/first-letter/index" },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

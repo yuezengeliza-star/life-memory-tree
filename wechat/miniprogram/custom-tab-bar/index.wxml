@@ -1,0 +1,21 @@
+<view class="bar" aria-label="底部导航">
+  <view
+    wx:for="{{tabs}}"
+    wx:key="path"
+    class="item{{selected === index ? ' active' : ''}}{{item.capture ? ' capture' : ''}}"
+    data-path="{{item.path}}"
+    bindtap="switch"
+    role="tab"
+    aria-label="{{item.text}}"
+  >
+    <view class="icon">
+      <image
+        class="tab-icon"
+        src="{{item.capture ? item.icon : (selected === index ? item.activeIcon : item.icon)}}"
+        mode="aspectFit"
+        aria-hidden="true"
+      />
+    </view>
+    <view class="label">{{item.text}}</view>
+  </view>
+</view>

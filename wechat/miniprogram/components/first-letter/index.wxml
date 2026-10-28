@@ -1,0 +1,46 @@
+<view wx:if="{{visible}}" class="layer {{compact?'compact':''}}">
+  <image class="bg" src="/assets/tree.png" mode="aspectFill" aria-hidden="true"/>
+  <view class="tint"></view>
+
+  <view wx:if="{{mode==='cover'}}" class="cover">
+    <view class="brand">让记忆</view>
+    <view class="brand">在这里生长</view>
+    <view class="cover-title">有一封信，</view>
+    <view class="cover-title">想交给你</view>
+    <view class="envelope-wrap">
+      <image class="envelope" src="/assets/icons/letter-envelope.svg" mode="aspectFit" aria-label="一封米色的信"/>
+      <view class="env-to">亲爱的朋友</view>
+      <view class="env-open">亲启</view>
+      <view class="env-from">人生记忆树 寄</view>
+    </view>
+  </view>
+
+  <block wx:else>
+    <button class="close" bindtap="dismiss" aria-label="收起这封信">
+      <image class="close-icon" src="/assets/icons/close.svg" mode="aspectFit" aria-hidden="true"/>
+    </button>
+    <view class="reader">
+      <scroll-view class="paper" scroll-y lower-threshold="40" bindscrolltolower="toEnd">
+        <view class="paper-body">
+          <view class="para" wx:for="{{letter}}" wx:key="index">{{item}}</view>
+          <view class="sign">{{sign}}</view>
+        </view>
+      </scroll-view>
+    </view>
+    <view wx:if="{{!atEnd}}" class="hint">
+      <image class="hint-icon" src="/assets/icons/arrow-up.svg" mode="aspectFit" aria-hidden="true"/>
+      <text>向上滑动，继续读信</text>
+    </view>
+  </block>
+
+  <view class="actions">
+    <block wx:if="{{mode==='cover'}}">
+      <button class="cta" bindtap="openLetter">拆开这封信</button>
+      <button class="later" bindtap="dismiss">稍后再读</button>
+    </block>
+    <block wx:else>
+      <button class="cta" bindtap="write">写下第一个瞬间</button>
+      <button class="later" bindtap="dismiss">收好这封信</button>
+    </block>
+  </view>
+</view>
